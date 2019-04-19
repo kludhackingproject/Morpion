@@ -5,14 +5,14 @@ Rien de tel que de coder un jeu pour solidifier ses bases en POO ! Nous allons d
 
 Pour ceux qui ne sont pas passé par la case morpion dans leur enfance (ou leur adolescence pour les moins hygiéniques), on vous précise 8 comportements attendus de la part du programme (par ordre d'importance) :
 
-    Le jeu ne se joue qu'à deux joueurs humains (on ne vous demande pas de coder d'intelligence artificielle aujourd'hui…);
-    Le programme doit commencer en demandant le prénom de chaque joueur ;
-    Le plateau de jeu est composé de 9 cases, chacune désignée par sa position verticale (A, B ou C) suivie de sa position horizontale (1, 2 ou 3). Exemples : la case en haut à droite s'appelle "A3" et celle en bas à droite "C3" ;
-    Au début de chaque tour de jeu, le programme affiche dans le terminal le plateau de jeu. Puis il demande au joueur dont c'est le tour où il souhaite jouer ;
-    Les joueurs jouent à tour de rôle jusqu'à que l'un d'eux gagne ou que le plateau de jeu soit rempli ;
-    Le programme doit détecter la fin de la partie. Si un joueur gagne, le jeu annonce son nom. S'il y a match nul, le programme doit en informer les deux joueurs ;
-    À la fin d'une partie, le programme doit proposer de lancer une nouvelle partie ;
-    Un effort sera à faire sur l'affichage du jeu dans le terminal (par ex : board affiché de façon stylée, compteur de parties, couleurs, etc.).
+* Le jeu ne se joue qu'à deux joueurs humains (on ne vous demande pas de coder d'intelligence artificielle aujourd'hui…);
+* Le programme doit commencer en demandant le prénom de chaque joueur ;
+* Le plateau de jeu est composé de 9 cases, chacune désignée par sa position verticale (A, B ou C) suivie de sa position horizontale (1, 2 ou 3). Exemples : la case en haut à droite s'appelle "A3" et celle en bas à droite "C3" ;
+* Au début de chaque tour de jeu, le programme affiche dans le terminal le plateau de jeu. Puis il demande au joueur dont c'est le tour où il souhaite jouer ;
+* Les joueurs jouent à tour de rôle jusqu'à que l'un d'eux gagne ou que le plateau de jeu soit rempli ;
+* Le programme doit détecter la fin de la partie. Si un joueur gagne, le jeu annonce son nom. S'il y a match nul, le programme doit en informer les deux joueurs ;
+* À la fin d'une partie, le programme doit proposer de lancer une nouvelle partie ;
+* Un effort sera à faire sur l'affichage du jeu dans le terminal (par ex : board affiché de façon stylée, compteur de parties, couleurs, etc.).
 
 ## 1 - Le projet
 
@@ -30,11 +30,11 @@ Tu es face à l'un des projets les plus complexes de THP : après 2 semaines int
 
 Première étape : se poser devant une feuille. Avant de coder, je t'invite à prendre une feuille et à essayer de décrire une partie de morpion. Identifie bien :
 
-    Quels objets physiques pourraient être codés en objets Ruby => Cela te donnera des pistes pour définir tes classes ;
-    Qu'est ce qui caractérise chaque objet de chaque classe identifiée (une couleur ? un nom ? un chiffre précis ?) => Cela te donnera des pistes pour définir les variables d'instance de chacune de tes classes ;
-    Quelles actions ces objets vont-ils subir ? Par exemple un joueur va passer du statut de "c'est ton tour" à "c'est le tour de l'autre", les cases vont se remplir, etc. => Cela te donnera des pistes de méthodes dont il va falloir définir la fonction précise et la classe qui l'hébergera ;
-    Liste de façon exhaustive les étapes d'une partie de morpion => Cela va t'aider à voir dans quel ordre les évènements doivent avoir lieu : on crée tel élément, on affiche ça, on modifie tel objet, etc.
-    À partir de la liste ci-dessus, essaye aussi d'identifier les endroits qui tournent en boucle (par exemple les joueurs qui remplissent le plateau à tour de rôle), ce qui change à chaque tour de boucle (quelle variable a changé au tour précédent ?) et les conditions qui font qu'on sort de la boucle (par exemple si tel élément arrive à telle valeur, on arrête la boucle) => Cela te permettra déjà d'identifier les endroits où tu vas coder des boucles for / each (nombre de tour défini à l'avance) ou while (nombre de tour variable – selon l'utilisateur notamment).
+* Quels objets physiques pourraient être codés en objets Ruby => Cela te donnera des pistes pour définir tes classes ;
+* Qu'est ce qui caractérise chaque objet de chaque classe identifiée (une couleur ? un nom ? un chiffre précis ?) => Cela te donnera des pistes pour définir les variables d'instance de chacune de tes classes ;
+* Quelles actions ces objets vont-ils subir ? Par exemple un joueur va passer du statut de "c'est ton tour" à "c'est le tour de l'autre", les cases vont se remplir, etc. => Cela te donnera des pistes de méthodes dont il va falloir définir la fonction précise et la classe qui l'hébergera ;
+* Liste de façon exhaustive les étapes d'une partie de morpion => Cela va t'aider à voir dans quel ordre les évènements doivent avoir lieu : on crée tel élément, on affiche ça, on modifie tel objet, etc.
+* À partir de la liste ci-dessus, essaye aussi d'identifier les endroits qui tournent en boucle (par exemple les joueurs qui remplissent le plateau à tour de rôle), ce qui change à chaque tour de boucle (quelle variable a changé au tour précédent ?) et les conditions qui font qu'on sort de la boucle (par exemple si tel élément arrive à telle valeur, on arrête la boucle) => Cela te permettra déjà d'identifier les endroits où tu vas coder des boucles for / each (nombre de tour défini à l'avance) ou while (nombre de tour variable – selon l'utilisateur notamment).
 
 J'espère que tu vois l'importance de cette première étape !! Si tu la pousses bien à fond, tu en sortiras avec une idée des classes, des variables d'instances, des méthodes, de leur ordre d'exécution et même des boucles à mettre en place. T'as 90 % de l'architecture de ton programme là !
 
@@ -42,20 +42,20 @@ Deuxième étape : se lancer en attaquant un petit morceau du problème. Mainten
 
 Troisième étape : attaquer un nouveau petit morceau du problème et ainsi de suite. On pourrait imaginer les morceaux suivants à faire, dans l'ordre :
 
-    afficher un plateau vide ;
-    demander à un joueur ce qu'il veut faire ;
-    en fonction de sa réponse remplir une case (d'abord sauver l'information dans un objet puis afficher le plateau modifié dans le terminal);
-    prendre en compte quelques cas particuliers : la saisie du joueur ne correspond pas à une case, le joueur choisit une case déjà occupée, etc.
-    etc.
+* afficher un plateau vide ;
+* demander à un joueur ce qu'il veut faire ;
+* en fonction de sa réponse remplir une case (d'abord sauver l'information dans un objet puis afficher le plateau modifié dans le terminal);
+* prendre en compte quelques cas particuliers : la saisie du joueur ne correspond pas à une case, le joueur choisit une case déjà occupée, etc.
+* etc.
 
 Avance ainsi morceau par morceau, nouvelle fonctionnalité par nouvelle fonctionnalité. Et ne passe jamais à la suivante sans avoir pu vérifier que la fonctionnalité que tu codes marche bien comme souhaité. Cette règle s'appliquera toute ta vie de développeur, c'est même sur ce genre de principes que la méthode agile, appliquée par de nombreuses start-ups, est basée. On avance par incrément.
 
 Quelques astuces en vrac :
 
-    Sur un projet aussi complexe, rappelle-toi, plus que jamais, qu'il faut nommer de façon explicite tes méthodes et variables. Sinon tu vas t'y perdre ! N'hésite pas notamment à identifier un array avec truc_array ou un hash avec truc_hash.
-    Pour faire ta view, tu vas faire tout plein de puts pour afficher le plateau de jeu sur le terminal. Pour éviter d'avoir des lignes affreusement longues du genre puts "-----------", sache que tu peux les remplacer par puts "-" * 30.
-    Pour un rendu sympa sur la view, sache que system "clear" or system "cls" te permet de vider l'écran de ton terminal.
-    Bonus (/!\ surtout ne passe pas du temps là-dessus avant d'avoir tout fini) : la gem "colorize" peut te permettre de rajouter des couleurs sur les puts de ton terminal. De même, sache que le terminal peut afficher des Émojis…
+* Sur un projet aussi complexe, rappelle-toi, plus que jamais, qu'il faut nommer de façon explicite tes méthodes et variables. Sinon tu vas t'y perdre ! N'hésite pas notamment à identifier un array avec truc_array ou un hash avec truc_hash.
+* Pour faire ta view, tu vas faire tout plein de puts pour afficher le plateau de jeu sur le terminal. Pour éviter d'avoir des lignes affreusement longues du genre puts "-----------", sache que tu peux les remplacer par puts "-" * 30.
+* Pour un rendu sympa sur la view, sache que system "clear" or system "cls" te permet de vider l'écran de ton terminal.
+* Bonus (/!\ surtout ne passe pas du temps là-dessus avant d'avoir tout fini) : la gem "colorize" peut te permettre de rajouter des couleurs sur les puts de ton terminal. De même, sache que le terminal peut afficher des Émojis…
 
 ## 3 - Pistes pour te lancer
 
@@ -71,27 +71,27 @@ Le programme va devoir comporter 6 classes.
 
 4 classes qui correspondent à des objets qu'on va manipuler pour faire tourner le jeu :
 
-    Game : c'est le jeu. Elle initialise tout, lance une partie (qui se termine avec une victoire ou un nul), permet de jouer un tour, de chercher si la partie est finie, etc.
-    Player : ce sont les joueurs. Il doit y avoir 2 instances de cette classe lors d'une partie.
-    Board : c'est le plateau. Il doit y avoir une instance de cette classe lors d'une partie.
-    BoardCase : c'est une case. Il devrait y avoir 9 instances de cette classe lors d'une partie.
+* Game : c'est le jeu. Elle initialise tout, lance une partie (qui se termine avec une victoire ou un nul), permet de jouer un tour, de chercher si la partie est finie, etc.
+* Player : ce sont les joueurs. Il doit y avoir 2 instances de cette classe lors d'une partie.
+* Board : c'est le plateau. Il doit y avoir une instance de cette classe lors d'une partie.
+* BoardCase : c'est une case. Il devrait y avoir 9 instances de cette classe lors d'une partie.
 
 2 classes vont nous permettre d'organiser le programme :
 
-    Application : cette classe va nous permettre de lancer le jeu. Elle va faire une boucle infinie de parties (on joue tant que les joueurs veulent continuer) et lancer l'instanciation d'un Game.
-    Show : cette classe sera une sorte de view. Elle affichera l'état du plateau de jeu à un instant T.
+* Application : cette classe va nous permettre de lancer le jeu. Elle va faire une boucle infinie de parties (on joue tant que les joueurs veulent continuer) et lancer l'instanciation d'un Game.
+* Show : cette classe sera une sorte de view. Elle affichera l'état du plateau de jeu à un instant T.
 
 ### 3.3 - Niveau "on veut réfléchir mais aide-nous un peu"
 
 Commencez par reprendre les classes listées ci-dessus. Maintenant nous allons détailler un peu le rôle et le fonctionnement de chacune :
 
-    BoardCase : chacune des 9 instances de BoardCase correspond à l'état d'une case du plateau.
-    Variables d'instance : une Boardcase est définie par sa position (A1, B2, B3, etc.) et son contenu (Soit elle est vide, soit elle a comme valeur le string "x", soit elle a comme valeur le string "o").
-    Board : à l'initialisation du plateau, il doit instancier immédiatement 9 BoardCases (une par case).
-    Variables d'instance : le Board doit embarquer les 9 BoardCase du jeu afin de pouvoir les lire et les modifier facilement. Il faut les lui attribuer sous forme d'un array ou d'un hash. Aussi, il est utile de compter le nombre de coup joué pour identifier facilement si on arrive au 9ème coup sans vainqueur.
-    Méthodes : le Board va s'occuper de faire le lien entre les BoardCases et le Game : il change les valeurs des BoardCases (de " " à "x" ou "o") et vérifie en fonction de la combinaison des BoardCases si la partie est finie (= un joueur a gagné ou bien les 9 cases sont remplies sans vainqueur).
-    Player
-    Variables d'instance : un joueur a un nom (habile) et un symbole ("x" ou "o").
-    Game : cette classe s'occupe de gérer toute la partie. À l'initialisation elle crée 2 instances de Player, et 1 instance de Board.
-    Variables d'instance : tu peux lui rattacher les 2 players (sous forme d'un array), le Board, et des informations annexes comme "quel joueur doit jouer ?", "quel est le statut de la partie (en cours ? player1 a gagné ? etc.)", etc.
-    Méthodes : Game permet de jouer un tour (demande au joueur ce qu'il veut faire et rempli la case), s'occupe de finir la partie si un joueur a gagné et propose aux joueurs de faire une nouvelle partie ensuite.
+* BoardCase : chacune des 9 instances de BoardCase correspond à l'état d'une case du plateau.
+** Variables d'instance : une Boardcase est définie par sa position (A1, B2, B3, etc.) et son contenu (Soit elle est vide, soit elle a comme valeur le string "x", soit elle a comme valeur le string "o").
+* Board : à l'initialisation du plateau, il doit instancier immédiatement 9 BoardCases (une par case).
+** Variables d'instance : le Board doit embarquer les 9 BoardCase du jeu afin de pouvoir les lire et les modifier facilement. Il faut les lui attribuer sous forme d'un array ou d'un hash. Aussi, il est utile de compter le nombre de coup joué pour identifier facilement si on arrive au 9ème coup sans vainqueur.
+** Méthodes : le Board va s'occuper de faire le lien entre les BoardCases et le Game : il change les valeurs des BoardCases (de " " à "x" ou "o") et vérifie en fonction de la combinaison des BoardCases si la partie est finie (= un joueur a gagné ou bien les 9 cases sont remplies sans vainqueur).
+* Player
+** Variables d'instance : un joueur a un nom (habile) et un symbole ("x" ou "o").
+* Game : cette classe s'occupe de gérer toute la partie. À l'initialisation elle crée 2 instances de Player, et 1 instance de Board.
+** Variables d'instance : tu peux lui rattacher les 2 players (sous forme d'un array), le Board, et des informations annexes comme "quel joueur doit jouer ?", "quel est le statut de la partie (en cours ? player1 a gagné ? etc.)", etc.
+** Méthodes : Game permet de jouer un tour (demande au joueur ce qu'il veut faire et rempli la case), s'occupe de finir la partie si un joueur a gagné et propose aux joueurs de faire une nouvelle partie ensuite.
